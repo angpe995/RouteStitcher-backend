@@ -6,6 +6,12 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  },
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "test:integration": "jest --passWithNoTests"
   }
 }
