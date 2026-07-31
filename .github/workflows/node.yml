@@ -32,4 +32,10 @@ jobs:
         run: npm ci
 
       - name: Run tests
+        env:
+            KOLEO_EMAIL: ${{ secrets.KOLEO_EMAIL }}
+            KOLEO_PASSWORD: ${{ secrets.KOLEO_PASSWORD }}
+            KOLEO_GRANT_TYPE: ${{ secrets.KOLEO_GRANT_TYPE }}
+            KOLEO_CLIENT_ID: ${{ secrets.KOLEO_CLIENT_ID }}
         run: npm test
+        
