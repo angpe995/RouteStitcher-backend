@@ -16,13 +16,19 @@ const {
     KOLEO_CLIENT_ID
 } = process.env;
 const saveToken = async(token, expiresIn)=> {
-    await fs.writeFile(
-        TOKEN_FILE,
-        JSON.stringify({
-            accessToken: token,
-            expiresAt: Date.now() + (expiresIn - 60) * 1000
-        }, null, 2)
-    );
+    try
+    {
+        await fs.writeFile(
+            TOKEN_FILE,
+            JSON.stringify({
+                accessToken: token,
+                expiresAt: Date.now() + (expiresIn - 60) * 1000
+            }, null, 2)
+        );
+    }catch(err){
+        console.error("Failed to save token:", err.message);
+        throw err;
+    }
 };
 const loadToken = async()=> {
     try {
@@ -69,11 +75,6 @@ const getAccessToken = async ()=>{
   
 };
 
-async function authorizeApi() {
-    const token = await getAccessToken();
-
-    api.defaults.headers.Authorization = `Bearer ${token}`;
-}
 module.exports={
     getAccessToken
 }
