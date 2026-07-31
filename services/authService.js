@@ -22,7 +22,7 @@ const saveToken = async(token, expiresIn)=> {
             TOKEN_FILE,
             JSON.stringify({
                 accessToken: token,
-                expiresAt: Date.now() + (expiresIn - 60) * 1000
+                expiresAt: expiresIn
             }, null, 2)
         );
     }catch(err){
@@ -36,10 +36,11 @@ const loadToken = async()=> {
         if (Date.now() < data?.expiresAt) {
             return data.accessToken;
         }
-    } catch {
-        console.error("File");
+    } catch(err) {
+         if (err.code !== "ENOENT") {
+            console.error("Failed to load token:", err.message);
+        }
     }
-
     return null;
 };
 const getAccessToken = async ()=>{
@@ -66,7 +67,7 @@ const getAccessToken = async ()=>{
         });
         accessToken = response.data.access_token;
         expiresAt = Date.now() + (response.data.expires_in - 60) * 1000;
-        saveToken(accessToken,expiresAt);
+        await saveToken(accessToken,expiresAt);
         return accessToken;
     } catch (err) {
         console.error("Failed to obtain KOLEO token:", err.message);
