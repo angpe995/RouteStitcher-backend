@@ -36,8 +36,20 @@ const getConnection = async(start,end)=>{
     }
 };
 it("should retrieve connection ID from connection UUID", async () => {
-    const connection= await getConnection(KATOWICE, LODZ);
+    const connection= await getConnection(KUTNO, LODZ);
+    console.log("Connection UUID:", connection.uuid);
     const result = await availabilityService.getConnectionId(connection.uuid);
+    console.log("Connection ID:", result);
     expect(result).toEqual(expect.any(Number));
 });
 
+it("should free places for a connection", async () => {
+    const connection= await getConnection(KUTNO, LODZ);
+    const connectionId = await availabilityService.getConnectionId(connection.uuid);
+    const tarrifIDs = await trainService.getTariffids(connectionId);
+   
+    const placeTypes = await trainService.getPlaceTypes(connectionId,tarrifIDs);
+    const place=placeTypes[0].id;
+    const result = await availabilityService.checkWholeConnection(connection,place);
+    expect(result).toEqual(expect.any(Array));
+});
