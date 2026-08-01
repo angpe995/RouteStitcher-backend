@@ -1,0 +1,2197 @@
+{
+    "special_compartment_types": [
+        {
+            "id": 7,
+            "icon": "wheelchair",
+            "name": "Miejsce dla osoby na wózku",
+            "information": "",
+            "terms": "Potwierdzam, że będzie podróżować osoba uprawniona do korzystania z tego miejsca — osoba z niepełnosprawnością, która porusza się na wózku."
+        },
+        {
+            "id": 11,
+            "icon": "bike",
+            "name": "Miejsce dla podróżnego z rowerem",
+            "information": "Aby skorzystać z tego miejsca, konieczne jest dodanie biletu na przewóz roweru.",
+            "terms": ""
+        },
+        {
+            "id": 17,
+            "icon": "guardian",
+            "name": "Opiekun osoby z niepełnospr.",
+            "information": "",
+            "terms": "Potwierdzam, że będzie podróżować osoba uprawniona do korzystania z tego miejsca — opiekun osoby podróżującej na wózku."
+        }
+    ],
+    "seats": [
+        {
+            "carriage_nr": "12",
+            "seat_nr": "11",
+            "special_compartment_type_id": 17,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "12",
+            "special_compartment_type_id": 7,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "15",
+            "special_compartment_type_id": 7,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "16",
+            "special_compartment_type_id": 17,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "21",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "22",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "23",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 7
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "24",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 7
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "25",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "26",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "31",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "32",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "33",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 7
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "34",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 7
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "35",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "36",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "45",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "47",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "51",
+            "special_compartment_type_id": 6,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "52",
+            "special_compartment_type_id": 6,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "53",
+            "special_compartment_type_id": 6,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "54",
+            "special_compartment_type_id": 6,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "55",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "56",
+            "special_compartment_type_id": 6,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "57",
+            "special_compartment_type_id": null,
+            "state": "BLOCKED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "58",
+            "special_compartment_type_id": 6,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "61",
+            "special_compartment_type_id": 11,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "62",
+            "special_compartment_type_id": 11,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "63",
+            "special_compartment_type_id": 11,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "64",
+            "special_compartment_type_id": 6,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "65",
+            "special_compartment_type_id": 11,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "66",
+            "special_compartment_type_id": 6,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "67",
+            "special_compartment_type_id": 11,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "12",
+            "seat_nr": "68",
+            "special_compartment_type_id": 11,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "11",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "12",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "14",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "15",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "16",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "17",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "18",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "21",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "22",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "23",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "24",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "25",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "26",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "27",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "28",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "31",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "32",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "33",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "34",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "35",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "36",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "37",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "38",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "41",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "42",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "43",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "44",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "45",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "46",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "47",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "48",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "51",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "52",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "53",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "54",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "55",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "56",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "57",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "58",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "61",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "62",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "63",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "64",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "65",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "66",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "67",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "68",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "71",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "72",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "73",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "74",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "75",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "76",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "77",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "78",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "81",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "82",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "83",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "84",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "85",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "86",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "87",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "88",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "91",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "94",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "95",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "96",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "97",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "13",
+            "seat_nr": "98",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "11",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "12",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "14",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "15",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "16",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "17",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "18",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "21",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "22",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "23",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "24",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "25",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "26",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "27",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "28",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "31",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "32",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "33",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "34",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "35",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "36",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "37",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "38",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "41",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "42",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "43",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "44",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "45",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "46",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "47",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "48",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "51",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "52",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "53",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "54",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "55",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "56",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "57",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "58",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "61",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "62",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "63",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "64",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "65",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "66",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "67",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "68",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "71",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "72",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "73",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "74",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "75",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "76",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "77",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "78",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "81",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "82",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "83",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "84",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "85",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "86",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "87",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "88",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "91",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "94",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "95",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "96",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "97",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "14",
+            "seat_nr": "98",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "11",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "12",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "14",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "15",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "16",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "17",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "18",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "21",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "22",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "23",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "24",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "25",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "26",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "27",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "28",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "31",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "32",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "33",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "34",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "35",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "36",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "37",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "38",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "41",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "42",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "43",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "44",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "45",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "46",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "47",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "48",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "51",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "52",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "53",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "54",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "55",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "56",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "57",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "58",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "61",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "62",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "63",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "64",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "65",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "66",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "67",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "68",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "71",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "72",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "73",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "74",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "75",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "76",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "77",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "78",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "81",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "82",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "83",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "84",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "85",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "86",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "87",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "88",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "91",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "94",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "95",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "96",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "97",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "15",
+            "seat_nr": "98",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "11",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "12",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "14",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "15",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "16",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "17",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "18",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "21",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "22",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "23",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "24",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "25",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "26",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "27",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "28",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "31",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "32",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "33",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "34",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "35",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "36",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "37",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "38",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "41",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "42",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "43",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "44",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "45",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "46",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "47",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "48",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "51",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "52",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "53",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "54",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "55",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "56",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "57",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "58",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "61",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "62",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "63",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "64",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "65",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "66",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "67",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "68",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "71",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "72",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "73",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "74",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "75",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "76",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "77",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "78",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "81",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "82",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "83",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "84",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "85",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "86",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "87",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "88",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "91",
+            "special_compartment_type_id": null,
+            "state": "RESERVED",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "94",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "95",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "96",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 1
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "97",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        },
+        {
+            "carriage_nr": "16",
+            "seat_nr": "98",
+            "special_compartment_type_id": null,
+            "state": "FREE",
+            "placement_id": 2
+        }
+    ]
+}
