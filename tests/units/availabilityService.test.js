@@ -2,7 +2,7 @@ jest.mock('../../services/pkpApi');
 const api = require("../../services/pkpApi");
 const availabilityService = require("../../services/availabilityService");
 const connections = require("../fixtures/fullConnection.json");
-const PLACE_ID=4;
+const PLACE_TYPES=[1234,5678];
 const seats = require("../fixtures/availibilityList.json");
 beforeEach(() => {
     api.put.mockImplementation((url, body) => {
@@ -40,7 +40,7 @@ it("should return seats array", async () => {
     const result = await availabilityService.fetchSeatsAvailability(
         connection.uuid,
         trainNr,
-        PLACE_ID
+        PLACE_TYPES
     );
     expect(result).toEqual(
         expect.objectContaining({ seats: expect.any(Array)
@@ -55,7 +55,7 @@ it ("should return only FREE seats (getFreeSeats)", async () => {
     const result = await availabilityService.fetchSeatsAvailability(
         connection.uuid,
         trainNr,
-        PLACE_ID
+        PLACE_TYPES
     );
     const freeSeats = availabilityService.getFreeSeats(result.seats);
     expect(freeSeats.every(seat => seat.state === "FREE")).toBe(true);
@@ -63,9 +63,9 @@ it ("should return only FREE seats (getFreeSeats)", async () => {
 it("should return only FREE seats(checkWholeConnection)", async () => {
     const connection=connections[0];
     const result = await availabilityService.checkWholeConnection(
-        connection,PLACE_ID
+        connection,PLACE_TYPES
     );
-    expect(result.every(seat => seat.state === "FREE")).toBe(true);
+    expect(result.every(train => train.place_types.every(placeType => placeType.seats.every(seat => seat.state === "FREE")))).toBe(true);
     expect(api.put).toHaveBeenCalled();
     expect(api.get).toHaveBeenCalled();
 });

@@ -18,14 +18,37 @@ const getFreeSeats = (seats) => {
     return seats.filter(seat => seat.state === "FREE");
 };
 const checkWholeConnection = async (
-    connection, placeType)=> {
+    connection, placeTypeIds)=> {
     if (!connection.legs?.length) {
         return [];
     }
+    const results = [];
     const connectionId = await getConnectionId(connection.uuid);
-    const trainNr = connection.legs[0].train_nr;
-    const response = await fetchSeatsAvailability(connectionId, trainNr, placeType);
-    return getFreeSeats(response.seats);
+    let index = 0;
+    for (const leg of connection.legs) {
+        if (leg.leg_type !== "train_leg") {
+        continue;
+        }
+        let placeTypes = [];
+        for (const placeTypeId of placeTypeIds) {
+        try {
+            const seats = await fetchSeatsAvailability(connectionId,leg.train_nr,placeTypeId);
+            placeTypes.push({id: placeTypeId,seats: getFreeSeats(seats.seats),});
+        } catch (e) {
+            if (e.response?.status === 422) {
+            continue;
+            }
+        }
+        }
+        results.push({
+            train_nr: leg.train_nr,
+            origin_station_id: leg.origin_station_id,
+            destination_station_id: leg.destination_station_id,
+            place_types: placeTypes,
+        });
+        index++;
+    }
+    return results;
 };
 module.exports = {
     checkWholeConnection,
