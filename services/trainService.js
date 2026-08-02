@@ -25,12 +25,20 @@ const getConnectionPrice =async(connection_id) =>{
         return result.data.prices[0];
     } catch(e)
     {
+        if (e.response?.status === 404) {
+            return null;
+        }
         console.error(e.message);
+        console.log(e.response?.status);
+        console.log(e.response?.data);
         throw new Error("Failed to get connection price.");
     }
 };
 const getTariffids=async(connection_id)=>{
     const respone = await getConnectionPrice(connection_id);
+    if (!respone) {
+        return [];
+    }
     return respone.tariff_ids;
 };
 const getNestedSeats=async(connectionID,tariffId)=>{
@@ -53,9 +61,11 @@ const getNestedSeats=async(connectionID,tariffId)=>{
     }   
 };
 const getPlaceTypes=async(connectionID,tariffId)=>{
-    const token = await getAccessToken();
     const nestedSeats = await getNestedSeats(connectionID,tariffId);
-    const placeTypes = nestedSeats.train_place_types?.[0]?.place_type?.place_types?.[0]?.place_types ?? [];
+    if (!nestedSeats?.train_place_types?.length) {
+        return [];
+    }
+    const placeTypes = nestedSeats.train_place_types.map((train) => ({train_nr: train.train_nr,placeTypes: train.place_type?.place_types?.[0]?.place_types ?? [],}));
     return placeTypes;
 };
 module.exports={

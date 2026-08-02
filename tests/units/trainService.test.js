@@ -141,7 +141,7 @@ it("should return place types", async () => {
     const placeTypes = await trainService.getPlaceTypes(connectionId,tariffIds);
     expect(placeTypes).toEqual(expect.any(Array));
     if (placeTypes.length > 0) {
-        expect(placeTypes[0]).toEqual(
+        expect(placeTypes[0].placeTypes[0]).toEqual(
             expect.objectContaining({
                 id: expect.any(Number),
                 name: expect.any(String),
