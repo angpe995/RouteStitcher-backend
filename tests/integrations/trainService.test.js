@@ -19,6 +19,7 @@ beforeAll(async () => {
     console.log("getting connections");
     const result = await trainService.getConnections(date, LODZ, KUTNO);
     connection = result[0];
+    connectionId=getConnectionId(connection.uuid);
 });
 it("should return at least one connection", async () => {
     expect(connection).toHaveProperty("uuid");
