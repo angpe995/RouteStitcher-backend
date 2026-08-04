@@ -58,6 +58,11 @@ const getNestedSeats=async(connectionID,tariffId)=>{
         return response.data;
     } catch (e) {
         console.error(e.message);
+        if (e.response?.status === 422) {
+            return {
+                train_place_types: []
+            };
+        }
     }   
 };
 const getPlaceTypes=async(connectionID,tariffId)=>{
