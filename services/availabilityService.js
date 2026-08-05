@@ -15,11 +15,15 @@ const fetchSeatsAvailability = async (connectionId, trainId, seatClass) => {
 };
 const getConnectionId = async (uuid) => {
   const token = await getAccessToken();
-  const response = await api.put(`/eol_connections/${uuid}/connection_id`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const response = await api.put(
+    `/eol_connections/${uuid}/connection_id`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
   return response.data.connection_id;
 };
 const getFreeSeats = (seats) => {
@@ -44,7 +48,12 @@ const checkWholeConnection = async (connection, placeTypeIds) => {
           leg.train_nr,
           placeTypeId,
         );
-        placeTypes.push({ id: placeTypeId, seats: getFreeSeats(seats.seats) });
+        const freeSeats = getFreeSeats(seats.seats);
+        placeTypes.push({
+          id: placeTypeId,
+          seats: freeSeats,
+          available: freeSeats.length > 0,
+        });
       } catch (e) {
         if (e.response?.status === 422) {
           continue;

@@ -24,9 +24,11 @@ const getConnectionPrice = async (connection_id) => {
     const result = await api.get(
       `/connections/${connection_id}/price?context=traveloptions`,
     );
-    return result.data.prices[0];
+    return result.data.prices;
   } catch (e) {
     if (e.response?.status === 404) {
+      console.log("Status:", e.response?.status);
+      console.dir(e.response?.data, { depth: null });
       return null;
     }
     console.error(e.message);
@@ -40,7 +42,7 @@ const getTariffids = async (connection_id) => {
   if (!respone) {
     return [];
   }
-  return respone.tariff_ids;
+  return respone.flatMap(price => price.tariff_ids);
 };
 const getNestedSeats = async (connectionID, tariffId) => {
   try {

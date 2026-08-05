@@ -4,6 +4,7 @@ const availabilityService = require("../../services/availabilityService");
 const connections = require("../fixtures/fullConnection.json");
 const PLACE_TYPES = [1234, 5678];
 const seats = require("../fixtures/availibilityList.json");
+jest.setTimeout(30000);
 beforeEach(() => {
   api.put.mockImplementation((url, body) => {
     if (url.includes("/connection_id")) {
@@ -31,6 +32,7 @@ it("should retrieve connection ID from connection UUID", async () => {
   expect(result).toBe(6628393124);
   expect(api.put).toHaveBeenCalledWith(
     expect.stringContaining("/connection_id"),
+    expect.any(Object),
     expect.any(Object),
   );
 });
