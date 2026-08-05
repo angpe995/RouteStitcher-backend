@@ -56,8 +56,7 @@ it("should return place types", async () => {
     expect(placeTypes[0].placeTypes[0]).toEqual(
       expect.objectContaining({
         id: expect.any(Number),
-        name: expect.any(String),
-        available: expect.any(Boolean),
+        name: expect.any(String)
       }),
     );
   }

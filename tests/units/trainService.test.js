@@ -116,7 +116,7 @@ it("should return connection price", async () => {
   const connection = result[0];
   const connectionId = await getConnectionId(connection.uuid);
   const prices = await trainService.getConnectionPrice(connectionId);
-  expect(prices).toHaveProperty("tariff_ids");
+  expect(prices[0]).toHaveProperty("tariff_ids");
 });
 it("should return tariff ids", async () => {
   const result = await trainService.getConnections(date, LODZ, KUTNO);
@@ -131,6 +131,7 @@ it("should return nested seats", async () => {
   const connection = result[0];
   const connectionId = await getConnectionId(connection.uuid);
   const tariffIds = await trainService.getTariffids(connectionId);
+  console.log(tariffIds);
   const nestedSeats = await trainService.getNestedSeats(
     connectionId,
     tariffIds,

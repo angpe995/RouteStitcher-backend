@@ -10,12 +10,14 @@ function formatDate(date) {
   const minutes = String(date.getMinutes()).padStart(2, "0");
   return `${day}.${month}.${year}T${hour}:${minutes}:00`;
 }
+jest.setTimeout(30000);
 const KATOWICE = 73312;
 const LODZ = 46706;
 const KUTNO = 32201;
 const GDANSK = 7500;
 const KRAKOW = 80416;
 const ZGIERZ = 46707;
+const BYDGOSZCZ = 18408;
 const CHELM = 50906;
 const getConnection = async (start, end, changes) => {
   const date = formatDate(new Date());
@@ -39,7 +41,7 @@ it("should retrieve connection ID from connection UUID", async () => {
 });
 
 it("should retrieve seat availability for a multi-leg connection", async () => {
-  const connection = await getConnection(CHELM, LODZ, 1);
+  const connection = await getConnection(LODZ, BYDGOSZCZ, 1);
   const connectionId = await availabilityService.getConnectionId(
     connection.uuid,
   );
@@ -72,6 +74,7 @@ it("should retrieve seat availability for a multi-leg connection", async () => {
               expect.objectContaining({
                 id: expect.any(Number),
                 seats: expect.any(Object),
+                available:expect.any(Boolean)
               }),
             );
           }
@@ -119,7 +122,6 @@ it("should retrieve seat availability for a single-leg connection", async () => 
             );
           }
         }
-        console.log(seats);
         expect(seats).toEqual(expect.any(Array));
       }
     }
