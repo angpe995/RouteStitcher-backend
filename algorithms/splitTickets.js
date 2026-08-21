@@ -1,4 +1,6 @@
-const generateCutPoints = (stationCount, tickets = 3) => {
+const canCreateSegment = (origin, destination) =>
+  origin.for_boarding && destination.for_alighting;
+const generateCutPoints = (stationCount, tickets) => {
   const result = [];
   function backtracking(result, current, max_len, cutPointCount) {
     if (current.length >= max_len) {
@@ -19,34 +21,55 @@ const generateCutPoints = (stationCount, tickets = 3) => {
   return result;
 };
 
-const splitTickets = (leg, options) => {
+const splitTickets = (leg, tickets = 3) => {
   const result = [];
-  const cutPoints = generateCutPoints(leg.stops_in_leg.length);
-  cutPoints.sort((a, b) => a.length - b.length);
+  const cutPoints = generateCutPoints(leg.stops_in_leg.length,tickets);
+  cutPoints.sort((a, b) => {
+    if (a.length !== b.length) {
+      return a.length - b.length;
+    }
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) {
+        return b[i] - a[i];
+      }
+    }
+    return 0;
+  });
   for (const CutPoint of cutPoints) {
     const conn = [];
-    let prev = leg.stops_in_leg[0].station_id;
+    let prev = leg.stops_in_leg[0];
     let index = 0;
     for (const point of CutPoint) {
-      conn.push({
-        train_nr: leg.train_nr,
-        station_origin: prev,
-        station_destination: leg.stops_in_leg[point].station_id,
-        arrival: leg.stops_in_leg[point].arrival,
-        departure: leg.stops_in_leg[point].departure,
-      });
-      prev = leg.stops_in_leg[point].station_id;
+      const origin = prev;
+      const destination = leg.stops_in_leg[point];
+      if (canCreateSegment(origin, destination)) {
+        conn.push({
+          train_nr: leg.train_nr,
+          train_name: leg.train_name,
+          station_origin: origin.station_id,
+          station_destination: destination.station_id,
+          departure: origin.departure,
+          arrival: destination.arrival,
+        });
+      }
+
+      prev = destination;
       index = point;
     }
     if (index != leg.stops_in_leg.length - 1) {
-      conn.push({
-        train_nr: leg.train_nr,
-        station_origin: prev,
-        station_destination:
-          leg.stops_in_leg[leg.stops_in_leg.length - 1].station_id,
-        arrival: leg.stops_in_leg[leg.stops_in_leg.length - 1].arrival,
-        departure: leg.stops_in_leg[leg.stops_in_leg.length - 1].departure,
-      });
+      const origin = prev;
+      const destination = leg.stops_in_leg[leg.stops_in_leg.length - 1];
+
+      if (canCreateSegment(origin, destination)) {
+        conn.push({
+          train_nr: leg.train_nr,
+          train_name: leg.train_name,
+          station_origin: origin.station_id,
+          station_destination: destination.station_id,
+          departure: origin.departure,
+          arrival: destination.arrival,
+        });
+      }
     }
 
     result.push(conn);
