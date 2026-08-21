@@ -1,4 +1,3 @@
-const availabilityService = require("../services/availabilityService");
 const trainService = require("../services/trainService");
 const availabilityPlaner = require("../services/availabilityPlanner");
 const splitTickets = require("./splitTickets");
@@ -39,8 +38,15 @@ const validateVariant = async (
         leg.station_origin,
         leg.station_destination,
       );
-      //console.dir(connections, {depth:3});
       connection = findMatchingConnection(connections, leg);
+      if (!connection) {
+        evaluatedSegments.push({
+          ...leg,
+          available: false,
+        });
+        totalDuration += 0;
+        continue;
+      }
       connectionCache.set(keyConnection, connection);
     }
 
@@ -50,6 +56,9 @@ const validateVariant = async (
       checkWhole = availabilityCache.get(availabilityKey);
     } else {
       checkWhole = await availabilityPlaner.checkAvailability(connection);
+      if (!checkWhole || checkWhole.length === 0) {
+        return [];
+      }
       availabilityCache.set(availabilityKey, checkWhole);
     }
 
@@ -109,7 +118,6 @@ const findBestVariant = async (
 const routeStitcher = async (connection, tickets = 3) => {
   const connectionCache = new Map();
   const availabilityCache = new Map();
-
   const checkWhole = await availabilityPlaner.checkAvailability(connection);
   if (!checkWhole) {
     return [];
@@ -117,6 +125,9 @@ const routeStitcher = async (connection, tickets = 3) => {
   const availableVariants = [];
   for (const train of checkWhole) {
     const trainLeg = getTrainLeg(connection, train.train_nr);
+    if (!trainLeg) {
+      continue;
+    }
     let bestVariant;
     for (let i = 2; i <= tickets; i++) {
       bestVariant = await findBestVariant(
@@ -125,11 +136,11 @@ const routeStitcher = async (connection, tickets = 3) => {
         connectionCache,
         i,
       );
-      if (bestVariant.coverage === MAX_COVERAGE) {
+      if (bestVariant && bestVariant.coverage === MAX_COVERAGE) {
         break;
       }
     }
-    if (bestVariant.coverage >= MIN_COVERAGE) {
+    if (bestVariant && bestVariant.coverage >= MIN_COVERAGE) {
       availableVariants.push(bestVariant);
     } else {
       availableVariants.push({
