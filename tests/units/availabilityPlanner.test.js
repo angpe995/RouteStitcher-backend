@@ -15,7 +15,7 @@ beforeEach(() => {
   trainService.getPlaceTypes.mockResolvedValue([
     {
       train_nr: 170095427,
-      placeTypes: [
+      place_types: [
         {
           id: 4,
           name: "Klasa 1",
@@ -52,7 +52,7 @@ beforeEach(() => {
     },
     {
       train_nr: 170095293,
-      placeTypes: [
+      place_types: [
         {
           id: 4,
           name: "Klasa 1",
@@ -88,66 +88,23 @@ beforeEach(() => {
       ],
     },
   ]);
-  availabilityService.checkWholeConnection.mockResolvedValue([
-    {
-      train_nr: 170095427,
-      origin_station_id: 16717,
-      destination_station_id: 46581,
-      place_types: [
-        {
-          id: 4,
-          seats: [],
-          available: false,
-          name: "Klasa 1",
-          seatSelection: true,
-        },
-        {
-          id: 5,
-          seats: [
-            {
-              carriage_nr: "3",
-              seat_nr: "96",
-              special_compartment_type_id: 7,
-              state: "FREE",
-              placement_id: 1,
-            },
-          ],
-          available: true,
-          name: "Klasa 2",
-          seatSelection: true,
-        },
-      ],
-    },
-    {
-      train_nr: 170095293,
-      origin_station_id: 46581,
-      destination_station_id: 46409,
-      place_types: [
-        {
-          id: 4,
-          seats: [],
-          available: false,
-          name: "Klasa 1",
-          seatSelection: true,
-        },
-        {
-          id: 5,
-          seats: [
-            {
-              carriage_nr: "3",
-              seat_nr: "96",
-              special_compartment_type_id: 7,
-              state: "FREE",
-              placement_id: 1,
-            },
-          ],
-          available: true,
-          name: "Klasa 2",
-          seatSelection: true,
-        },
-      ],
-    },
-  ]);
+  availabilityService.checkTrainAvailability.mockResolvedValue({
+    place_types: [
+      {
+        id: 5,
+        seats: [
+          {
+            carriage_nr: "3",
+            seat_nr: "96",
+            special_compartment_type_id: 7,
+            state: "FREE",
+            placement_id: 1,
+          },
+        ],
+        available: true,
+      },
+    ],
+  });
 });
 afterEach(() => {
   jest.clearAllMocks();
@@ -159,15 +116,20 @@ it("should return train availability", async () => {
     expect(train).toEqual(
       expect.objectContaining({
         train_nr: expect.any(Number),
-        origin_station_id: expect.any(Number),
-        destination_station_id: expect.any(Number),
         place_types: expect.any(Array),
       }),
     );
-    for (const placeType of train.place_types) {
-      expect(placeType.available).toBe(placeType.seats.length > 0);
-      expect(placeType.seatSelection).toEqual(expect.any(Boolean));
-      expect(placeType.name).toEqual(expect.any(String));
+     for (const placeType of train.place_types) {
+      expect(placeType).toEqual(
+        expect.objectContaining({
+          id: expect.any(Number),
+          name: expect.any(String),
+          available: expect.any(Boolean),
+          seats: expect.any(Array),
+          seat_selection_available: expect.any(Boolean),
+          reservation_modes: expect.any(Object),
+        }),
+      );
     }
   }
 });

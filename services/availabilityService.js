@@ -1,5 +1,4 @@
 const { getAccessToken } = require("./authService");
-const { getConnectionPrice } = require("./trainService");
 const api = require("./pkpApi");
 const fetchSeatsAvailability = async (connectionId, trainId, seatClass) => {
   const token = await getAccessToken();
@@ -26,53 +25,62 @@ const getConnectionId = async (uuid) => {
   );
   return response.data.connection_id;
 };
+const getConnectionByUUID = async (getConnectionByUUID) => {
+  const response = await api.get(`eol_connections/${getConnectionByUUID}`);
+  return response.data;
+};
 const getFreeSeats = (seats) => {
   return seats.filter((seat) => seat.state === "FREE");
 };
-const checkWholeConnection = async (connection, placeTypeIds) => {
-  if (!connection.legs?.length) {
-    return [];
+const checkTrainAvailability = async (
+  connection,
+  trainNr,
+  placeTypeIds,
+) => {
+  if (!placeTypeIds.length) {
+    return null;
   }
-  const results = [];
+  const trainLeg = connection.legs?.find(
+    (leg) =>
+      leg.leg_type === "train_leg" &&
+      leg.train_nr === trainNr,
+  );
+  if (!trainLeg) {
+    return null;
+  }
   const connectionId = await getConnectionId(connection.uuid);
-  let index = 0;
-  for (const leg of connection.legs) {
-    if (leg.leg_type !== "train_leg") {
-      continue;
-    }
-    let placeTypes = [];
-    for (const placeTypeId of placeTypeIds) {
-      try {
-        const seats = await fetchSeatsAvailability(
-          connectionId,
-          leg.train_nr,
-          placeTypeId,
-        );
-        const freeSeats = getFreeSeats(seats.seats);
-        placeTypes.push({
-          id: placeTypeId,
-          seats: freeSeats,
-          available: freeSeats.length > 0,
-        });
-      } catch (e) {
-        if (e.response?.status === 422) {
-          continue;
-        }
+  const placeTypes = [];
+  for (const placeTypeId of placeTypeIds) {
+    try {
+      const seats = await fetchSeatsAvailability(
+        connectionId,
+        trainNr,
+        placeTypeId,
+      );
+      const freeSeats = getFreeSeats(seats.seats);
+      placeTypes.push({
+        id: placeTypeId,
+        seats: freeSeats,
+        available: freeSeats.length > 0,
+      });
+    } catch (e) {
+      if (e.response?.status === 422) {
+        continue;
       }
+      throw e;
     }
-    results.push({
-      train_nr: leg.train_nr,
-      origin_station_id: leg.origin_station_id,
-      destination_station_id: leg.destination_station_id,
-      place_types: placeTypes,
-    });
-    index++;
   }
-  return results;
+  return {
+    train_nr: trainLeg.train_nr,
+    origin_station_id: trainLeg.origin_station_id,
+    destination_station_id: trainLeg.destination_station_id,
+    place_types: placeTypes,
+  };
 };
 module.exports = {
-  checkWholeConnection,
+  checkTrainAvailability,
   getFreeSeats,
   getConnectionId,
   fetchSeatsAvailability,
+  getConnectionByUUID,
 };

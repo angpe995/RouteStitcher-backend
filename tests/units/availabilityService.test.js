@@ -3,6 +3,7 @@ const api = require("../../services/pkpApi");
 const availabilityService = require("../../services/availabilityService");
 const connections = require("../fixtures/fullConnection.json");
 const PLACE_TYPES = [1234, 5678];
+const TRAIN_NR=83190;
 const seats = require("../fixtures/availibilityList.json");
 jest.setTimeout(30000);
 beforeEach(() => {
@@ -63,15 +64,15 @@ it("should return only FREE seats (getFreeSeats)", async () => {
 });
 it("should return only FREE seats(checkWholeConnection)", async () => {
   const connection = connections[0];
-  const result = await availabilityService.checkWholeConnection(
+  const trainNr = connection.legs[0].train_nr;
+  const result = await availabilityService.checkTrainAvailability(
     connection,
+    trainNr,
     PLACE_TYPES,
   );
   expect(
-    result.every((train) =>
-      train.place_types.every((placeType) =>
-        placeType.seats.every((seat) => seat.state === "FREE"),
-      ),
+    result.place_types.every((placeType) =>
+      placeType.seats.every((seat) => seat.state === "FREE"),
     ),
   ).toBe(true);
   expect(api.put).toHaveBeenCalled();

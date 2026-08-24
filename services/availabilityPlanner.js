@@ -2,12 +2,8 @@ const trainService = require("./trainService");
 const availabilityService = require("./availabilityService");
 const getAllPlaceTypes = async (connectionId, tariffIds) => {
   const result = [];
-  for (const tariffId of tariffIds) {
-    const placeTypes = await trainService.getPlaceTypes(connectionId, [
-      tariffId,
-    ]);
-    result.push(...placeTypes);
-  }
+  const placeTypes = await trainService.getPlaceTypes(connectionId, tariffIds);
+  result.push(...placeTypes);
   return result;
 };
 const checkAvailability = async (connection) => {
@@ -21,18 +17,58 @@ const checkAvailability = async (connection) => {
   const placeTypes = await getAllPlaceTypes(connectionId, tarrifIDs);
   const result = [];
   for (const train of placeTypes) {
-    const ids = train.placeTypes.map((p) => p.id);
-    const seats = await availabilityService.checkWholeConnection(
-      connection,
-      ids,
-    );
-    const trainSeats = seats.find((t) => t.train_nr === train.train_nr);
-    for (const seatType of trainSeats.place_types) {
-      const original = train.placeTypes.find((p) => p.id === seatType.id);
-      seatType.name = original.name;
-      seatType.seatSelection = original.reservation_modes.seat_map;
+    const trainResult = {
+      train_nr: train.train_nr,
+      place_types: [],
+    };
+    const seatSelectableTypes = train.place_types.filter((placeType) => {
+      return (
+        placeType.available &&
+        (placeType.reservation_modes?.seat_map === true ||
+          placeType.reservation_modes?.place_indication === true)
+      );
+    });
+    const nonSelectableTypes = train.place_types.filter((placeType) => {
+      return (
+        placeType.available &&
+        placeType.reservation_modes?.seat_map !== true &&
+        placeType.reservation_modes?.place_indication !== true
+      );
+    });
+
+    for (const placeType of nonSelectableTypes) {      trainResult.place_types.push({
+        train_nr: train.train_nr,
+        place_types: [
+          {
+            id: placeType.id,
+            seats: [],
+            available: true,
+            name: placeType.name,
+            seat_selection_available: false,
+            reservation_modes: placeType.reservation_modes,
+          },
+        ],
+      });
     }
-    result.push(trainSeats);
+    const ids = seatSelectableTypes.map((placeType) => placeType.id);
+    if (ids.length !== 0) {
+      const seats = await availabilityService.checkTrainAvailability(
+        connection,
+        train.train_nr,
+        ids,
+      );
+      for (const seatType of seats.place_types) {
+        const original = train.place_types.find((p) => p.id === seatType.id);
+        if (!original) {
+          continue;
+        }
+        seatType.name = original.name;
+        seatType.seat_selection_available = true;
+        seatType.reservation_modes = original.reservation_modes;
+      }
+      trainResult.place_types.push(...seats.place_types);
+    }
+    result.push(trainResult);
   }
   return result;
 };

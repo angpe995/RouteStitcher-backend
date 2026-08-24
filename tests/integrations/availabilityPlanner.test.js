@@ -38,7 +38,7 @@ const getConnection = async (start, end, changes) => {
 };
 
 it("should return train availability", async () => {
-  const connection = await getConnection(LODZ, BYDGOSZCZ, 1);
+  const connection = await getConnection(LODZ, GDANSK, 1);
   const result = await availabilityPlanner.checkAvailability(connection);
   expect(result).toEqual(expect.any(Array));
   expect(result.length).toBeGreaterThan(1);
@@ -46,21 +46,22 @@ it("should return train availability", async () => {
     expect(train).toEqual(
       expect.objectContaining({
         train_nr: expect.any(Number),
-        origin_station_id: expect.any(Number),
-        destination_station_id: expect.any(Number),
         place_types: expect.any(Array),
       }),
     );
-    for (const placeType of train.place_types) {
-      expect(placeType).toEqual(
-        expect.objectContaining({
-          id: expect.any(Number),
-          name: expect.any(String),
-          seatSelection: expect.any(Boolean),
-          available: expect.any(Boolean),
-          seats: expect.any(Array),
-        }),
-      );
+    for (const placeTypeTrain of train.place_types) {
+      for (const placeType of placeTypeTrain.place_types) {
+        expect(placeType).toEqual(
+          expect.objectContaining({
+            id: expect.any(Number),
+            name: expect.any(String),
+            available: expect.any(Boolean),
+            seats: expect.any(Array),
+            seat_selection_available: expect.any(Boolean),
+            reservation_modes: expect.any(Object),
+          }),
+        );
+      }
     }
   }
 });
