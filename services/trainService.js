@@ -70,8 +70,6 @@ const getNestedSeats = async (connectionID, tariffId) => {
 };
 const getPlaceTypes = async (connectionID, tariffId) => {
   const nestedSeats = await getNestedSeats(connectionID, tariffId);
-  //console.log("tariffId ",tariffId);
-  //console.log("nested seats ",nestedSeats);
   if (!nestedSeats?.train_place_types?.length) {
     return [];
   }
@@ -91,10 +89,15 @@ const getPlaceTypes = async (connectionID, tariffId) => {
   });
   return placeTypes;
 };
+const searchConnections = async (date, start, end, limit = 4) => {
+  const connections = await getConnections(date, start, end);
+  return connections.slice(0, limit);
+};
 module.exports = {
   getConnections,
   getConnectionPrice,
   getTariffids,
   getNestedSeats,
   getPlaceTypes,
+  searchConnections
 };

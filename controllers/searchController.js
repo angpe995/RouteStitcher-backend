@@ -2,16 +2,17 @@ const trainService = require("../services/trainService");
 
 const searchRoutes = async (req, res) => {
   try {
-    const { departure, destination, date } = req.query;
+    const { departure, destination, date,limit } = req.query;
     if (!departure || !destination || !date) {
       return res.status(400).json({
         error: "departure, destination and date are required",
       });
     }
-    const connections = await trainService.getConnections(
+    const connections = await trainService.searchConnections(
       date,
       Number(departure),
       Number(destination),
+      limit
     );
 
     return res.json(connections);
