@@ -5,6 +5,7 @@ const app = express();
 const PORT = 5000;
 const searchRoutes = require("./routes/search");
 const stationRoutes = require('./routes/stations');
+const checkRouteAvailability = require("./routes/check");
 app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => {
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/search", searchRoutes);
 app.use('/api/stations', stationRoutes);
+app.use("/api", checkRouteAvailability);
 app.listen(PORT, () => {
   console.log(`Сервер стартував на http://localhost:${PORT}`);
 });
