@@ -1,12 +1,10 @@
 const trainService = require("../../services/trainService");
 const availabilityService = require("../../services/availabilityService");
-const api = require("../../services/pkpApi");
-const { getBrandById } = require("../../services/brandService");
 function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
-  const hour = String(date.getHours()).padStart(2, "0");
+  const hour = String(date.getHours()-11).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
   return `${day}.${month}.${year}T${hour}:${minutes}:00`;
 }
@@ -74,7 +72,7 @@ it("should retrieve seat availability for a multi-leg connection", async () => {
               expect.objectContaining({
                 id: expect.any(Number),
                 seats: expect.any(Object),
-                available:expect.any(Boolean)
+                available: expect.any(Boolean),
               }),
             );
           }

@@ -3,6 +3,15 @@ const availabilityPlaner = require("../services/availabilityPlanner");
 const splitTickets = require("./splitTickets");
 const MIN_COVERAGE = 0.4;
 const MAX_COVERAGE = 1;
+const selectPlaceClass = (placeTypes, requestedClass) => {
+  if (requestedClass) {
+    const requested = placeTypes.find(
+      (placeType) => placeType.id === requestedClass && placeType.available,
+    );
+    return requested ?? null;
+  }
+  return placeTypes.find((placeType) => placeType.available) ?? null;
+};
 const findMatchingConnection = (connections, segment) =>
   connections.find(
     (connection) =>
@@ -22,7 +31,7 @@ const validateVariant = async (
   variant,
   availabilityCache = new Map(),
   connectionCache = new Map(),
-  placeClass = 5,
+  placeClass = null,
 ) => {
   const evaluatedSegments = [];
   let coveredDuration = 0;
@@ -49,7 +58,6 @@ const validateVariant = async (
       }
       connectionCache.set(keyConnection, connection);
     }
-
     let checkWhole;
     const availabilityKey = connection.uuid;
     if (availabilityCache.has(availabilityKey)) {
@@ -61,19 +69,22 @@ const validateVariant = async (
       }
       availabilityCache.set(availabilityKey, checkWhole);
     }
+    const isAvailable = checkWhole.every((train) => {
+      const selectedPlaceType = selectPlaceClass(train.place_types, placeClass);
+      if (!selectedPlaceType) {
+        return false;
+      }
+      if (!selectedPlaceType.seat_selection_available) {
+        return selectedPlaceType.available;
+      }
 
-    const isAvailable = checkWhole.every((train) =>
-      train.place_types.some(
-        (placeType) =>
-          placeType.id === placeClass &&
-          placeType.available &&
-          placeType.seats?.some(
-            (seat) =>
-              seat.state === "FREE" &&
-              seat.special_compartment_type_id === null,
-          ),
-      ),
-    );
+      return (
+        selectedPlaceType.seats?.some(
+          (seat) =>
+            seat.state === "FREE" && seat.special_compartment_type_id === null,
+        ) ?? false
+      );
+    });
     evaluatedSegments.push({
       ...leg,
       available: isAvailable,
@@ -84,6 +95,7 @@ const validateVariant = async (
     totalDuration += connection.legs[0].duration;
   }
   return {
+    type: coveredDuration / totalDuration==MAX_COVERAGE?"direct":"split",
     segments: evaluatedSegments,
     coveredDuration,
     coverage: coveredDuration / totalDuration,
@@ -95,6 +107,7 @@ const findBestVariant = async (
   availabilityCache,
   connectionCache,
   tickets,
+  placeClass = null,
 ) => {
   const variants = splitTickets.splitTickets(trainLeg, tickets);
   let bestVariant = null;
@@ -104,6 +117,7 @@ const findBestVariant = async (
       variant,
       availabilityCache,
       connectionCache,
+      placeClass,
     );
     if (validatedVariant.coverage >= minCovarage) {
       bestVariant = validatedVariant;
@@ -115,7 +129,7 @@ const findBestVariant = async (
   }
   return bestVariant;
 };
-const routeStitcher = async (connection, tickets = 3) => {
+const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
   const connectionCache = new Map();
   const availabilityCache = new Map();
   const checkWhole = await availabilityPlaner.checkAvailability(connection);
@@ -129,28 +143,55 @@ const routeStitcher = async (connection, tickets = 3) => {
       continue;
     }
     let bestVariant;
-    for (let i = 2; i <= tickets; i++) {
-      bestVariant = await findBestVariant(
-        trainLeg,
-        availabilityCache,
-        connectionCache,
-        i,
-      );
-      if (bestVariant && bestVariant.coverage === MAX_COVERAGE) {
-        break;
+    const selectedPlaceType = selectPlaceClass(train.place_types, placeClass);
+    if (selectedPlaceType) {
+      availableVariants.push({
+        train_nr: trainLeg.train_nr,
+        origin_station_id: trainLeg.origin_station_id,
+        destination_station_id: trainLeg.destination_station_id,
+        routeVariant: {
+          type: "direct",
+          segments: [],
+          coveredDuration: trainLeg.duration,
+          coverage: MAX_COVERAGE,
+        },
+      });
+    } else {
+      for (let i = 2; i <= tickets; i++) {
+        bestVariant = await findBestVariant(
+          trainLeg,
+          availabilityCache,
+          connectionCache,
+          i,
+          placeClass,
+        );
+        console.log("BEST VAARIANT",trainLeg.train_nr,bestVariant);
+        if (bestVariant && bestVariant.coverage === MAX_COVERAGE) {
+          break;
+        }
+      }
+      if (bestVariant && bestVariant.coverage >= MIN_COVERAGE) {
+        availableVariants.push({
+          train_nr: trainLeg.train_nr,
+          origin_station_id: trainLeg.origin_station_id,
+          destination_station_id: trainLeg.destination_station_id,
+          routeVariant: bestVariant,
+        });
+      } else {
+        availableVariants.push({
+          train_nr: trainLeg.train_nr,
+          origin_station_id: trainLeg.origin_station_id,
+          destination_station_id: trainLeg.destination_station_id,
+          routeVariant: {
+            type: "standing",
+            segments: [],
+            coveredDuration: 0,
+            coverage: 0,
+          },
+        });
       }
     }
-    if (bestVariant && bestVariant.coverage >= MIN_COVERAGE) {
-      availableVariants.push(bestVariant);
-    } else {
-      availableVariants.push({
-        segments: [],
-        coveredDuration: 0,
-        coverage: 0,
-      });
-    }
   }
-  console.log(availableVariants);
   return availableVariants;
 };
 module.exports = {

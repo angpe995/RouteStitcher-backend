@@ -42,7 +42,7 @@ const getTariffids = async (connection_id) => {
   if (!respone) {
     return [];
   }
-  return respone.flatMap(price => price.tariff_ids);
+  return respone.flatMap((price) => price.tariff_ids);
 };
 const getNestedSeats = async (connectionID, tariffId) => {
   try {
@@ -73,11 +73,25 @@ const getPlaceTypes = async (connectionID, tariffId) => {
   if (!nestedSeats?.train_place_types?.length) {
     return [];
   }
-  const placeTypes = nestedSeats.train_place_types.map((train) => ({
-    train_nr: train.train_nr,
-    placeTypes: train.place_type?.place_types?.[0]?.place_types ?? [],
-  }));
+  const placeTypes = nestedSeats.train_place_types.map((train) => {
+    const options = train.place_type?.place_types ?? [];
+    return {
+      train_nr: train.train_nr,
+      place_types: options.flatMap((type) =>
+        (type.place_types ?? []).map((placeType) => ({
+          id: placeType.id,
+          name: placeType.name,
+          available: placeType.available,
+          reservation_modes: placeType.reservation_modes,
+        })),
+      ),
+    };
+  });
   return placeTypes;
+};
+const searchConnections = async (date, start, end, limit = 4) => {
+  const connections = await getConnections(date, start, end);
+  return connections.slice(0, limit);
 };
 module.exports = {
   getConnections,
@@ -85,4 +99,5 @@ module.exports = {
   getTariffids,
   getNestedSeats,
   getPlaceTypes,
+  searchConnections
 };
