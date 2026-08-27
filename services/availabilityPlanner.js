@@ -36,20 +36,16 @@ const checkAvailability = async (connection) => {
       );
     });
 
-    for (const placeType of nonSelectableTypes) {      trainResult.place_types.push({
-        train_nr: train.train_nr,
-        place_types: [
-          {
-            id: placeType.id,
-            seats: [],
-            available: true,
-            name: placeType.name,
-            seat_selection_available: false,
-            reservation_modes: placeType.reservation_modes,
-          },
-        ],
-      });
-    }
+    for (const placeType of nonSelectableTypes) {
+  trainResult.place_types.push({
+    id: placeType.id,
+    seats: [],
+    available: placeType.available,
+    name: placeType.name,
+    seat_selection_available: false,
+    reservation_modes: placeType.reservation_modes,
+  });
+}
     const ids = seatSelectableTypes.map((placeType) => placeType.id);
     if (ids.length !== 0) {
       const seats = await availabilityService.checkTrainAvailability(
