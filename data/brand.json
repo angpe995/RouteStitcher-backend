@@ -1,0 +1,412 @@
+[
+  {
+    "id": 6,
+    "name": "ARRIVARP",
+    "display_name": "ARRIVARP",
+    "logo_text": "AR",
+    "color": "#018091",
+    "carrier_id": 1,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 40,
+    "name": "MultiPlaza",
+    "display_name": "MultiPlaza",
+    "logo_text": "AR",
+    "color": "#018091",
+    "carrier_id": 1,
+    "attribute_definition_id": null,
+    "is_commercial": false
+  },
+  {
+    "id": 51,
+    "name": "CD",
+    "display_name": "Ceske Drahy",
+    "logo_text": "ČD",
+    "color": "#FD6608",
+    "carrier_id": 16,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 2,
+    "name": "EIC",
+    "display_name": "EIC",
+    "logo_text": "EIC",
+    "color": "#6C727A",
+    "carrier_id": 3,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 29,
+    "name": "EIP",
+    "display_name": "EIP",
+    "logo_text": "EIP",
+    "color": "#102C76",
+    "carrier_id": 3,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 64,
+    "name": "FlixBus",
+    "display_name": "FlixBus",
+    "logo_text": "FLIX",
+    "color": "#97d700",
+    "carrier_id": 18,
+    "attribute_definition_id": 56,
+    "is_commercial": true
+  },
+  {
+    "id": 54,
+    "name": "RKW",
+    "display_name": "FPKW",
+    "logo_text": "FPKW",
+    "color": "#ADB3B3",
+    "carrier_id": 9,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 28,
+    "name": "IC",
+    "display_name": "IC",
+    "logo_text": "IC",
+    "color": "#EF7F0B",
+    "carrier_id": 3,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 4,
+    "name": "IR",
+    "display_name": "IR",
+    "logo_text": "IR",
+    "color": "#E50000",
+    "carrier_id": 4,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 10,
+    "name": "KD",
+    "display_name": "KD",
+    "logo_text": "KD",
+    "color": "#2A2A28",
+    "carrier_id": 6,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 45,
+    "name": "KDP",
+    "display_name": "KDP",
+    "logo_text": "KD",
+    "color": "#2A2A28",
+    "carrier_id": 6,
+    "attribute_definition_id": null,
+    "is_commercial": false
+  },
+  {
+    "id": 59,
+    "name": "Kulturzug",
+    "display_name": "KD",
+    "logo_text": "KD",
+    "color": "#2A2A28",
+    "carrier_id": 6,
+    "attribute_definition_id": null,
+    "is_commercial": false
+  },
+  {
+    "id": 58,
+    "name": "KDR",
+    "display_name": "KD Rowerowy",
+    "logo_text": "KD R",
+    "color": "#2A2A28",
+    "carrier_id": 6,
+    "attribute_definition_id": 28,
+    "is_commercial": true
+  },
+  {
+    "id": 66,
+    "name": "KDA",
+    "display_name": "KDA",
+    "logo_text": "KDA",
+    "color": "#2A2A28",
+    "carrier_id": 6,
+    "attribute_definition_id": 56,
+    "is_commercial": true
+  },
+  {
+    "id": 14,
+    "name": "KM",
+    "display_name": "KM",
+    "logo_text": "KM",
+    "color": "#00A34F",
+    "carrier_id": 10,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 56,
+    "name": "SLONECZNY",
+    "display_name": "KM",
+    "logo_text": "KM",
+    "color": "#00A34F",
+    "carrier_id": 10,
+    "attribute_definition_id": null,
+    "is_commercial": false
+  },
+  {
+    "id": 62,
+    "name": "KM BUS",
+    "display_name": "KM BUS",
+    "logo_text": "KM BUS",
+    "color": "#00A34F",
+    "carrier_id": 10,
+    "attribute_definition_id": 56,
+    "is_commercial": false
+  },
+  {
+    "id": 33,
+    "name": "KML",
+    "display_name": "KMŁ",
+    "logo_text": "KMŁ",
+    "color": "#FBBF00",
+    "carrier_id": 12,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 57,
+    "name": "KOLEO BUS",
+    "display_name": "KOLEO BUS",
+    "logo_text": "KOLEO",
+    "color": "#0075E2",
+    "carrier_id": 14,
+    "attribute_definition_id": 56,
+    "is_commercial": true
+  },
+  {
+    "id": 11,
+    "name": "KS",
+    "display_name": "KŚ",
+    "logo_text": "KŚ",
+    "color": "#009EDC",
+    "carrier_id": 7,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 12,
+    "name": "KW",
+    "display_name": "KW",
+    "logo_text": "KW",
+    "color": "#9D0A0E",
+    "carrier_id": 8,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 47,
+    "name": "LEO",
+    "display_name": "Leo Express",
+    "logo_text": "LEO",
+    "color": "#FD6608",
+    "carrier_id": 15,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 52,
+    "name": "LEO_PLUS",
+    "display_name": "Leo Express",
+    "logo_text": "LEO",
+    "color": "#FD6608",
+    "carrier_id": 15,
+    "attribute_definition_id": null,
+    "is_commercial": false
+  },
+  {
+    "id": 61,
+    "name": "LA",
+    "display_name": "ŁA",
+    "logo_text": "ŁA",
+    "color": "#ADB3B3",
+    "carrier_id": 9,
+    "attribute_definition_id": 56,
+    "is_commercial": true
+  },
+  {
+    "id": 13,
+    "name": "LKA",
+    "display_name": "ŁKA",
+    "logo_text": "ŁKA",
+    "color": "#ADB3B3",
+    "carrier_id": 9,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 46,
+    "name": "LP",
+    "display_name": "ŁKA Przyspieszony",
+    "logo_text": "ŁP",
+    "color": "#ADB3B3",
+    "carrier_id": 9,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 43,
+    "name": "LS",
+    "display_name": "ŁKA Sprinter",
+    "logo_text": "ŁS",
+    "color": "#ADB3B3",
+    "carrier_id": 9,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 63,
+    "name": "MLD",
+    "display_name": "MLD",
+    "logo_text": "MLD",
+    "color": "#ec008e",
+    "carrier_id": 12,
+    "attribute_definition_id": 56,
+    "is_commercial": true
+  },
+  {
+    "id": 49,
+    "name": "PKS",
+    "display_name": "PKS",
+    "logo_text": "PKS",
+    "color": "#adb3b3",
+    "carrier_id": 9,
+    "attribute_definition_id": 56,
+    "is_commercial": true
+  },
+  {
+    "id": 3,
+    "name": "REG",
+    "display_name": "REG",
+    "logo_text": "PR",
+    "color": "#E50000",
+    "carrier_id": 4,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 5,
+    "name": "RE",
+    "display_name": "RE",
+    "logo_text": "RE",
+    "color": "#ADB3B3",
+    "carrier_id": 4,
+    "attribute_definition_id": null,
+    "is_commercial": false
+  },
+  {
+    "id": 65,
+    "name": "RegioJet",
+    "display_name": "RegioJet",
+    "logo_text": "RJ",
+    "color": "#FABB00",
+    "carrier_id": 19,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 9,
+    "name": "SKMT",
+    "display_name": "SKMT",
+    "logo_text": "SKM-T",
+    "color": "#003955",
+    "carrier_id": 2,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 27,
+    "name": "SKM",
+    "display_name": "SKM",
+    "logo_text": "SKM-W",
+    "color": "#FF1100",
+    "carrier_id": 11,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 38,
+    "name": "SKPL",
+    "display_name": "SKPL",
+    "logo_text": "SKPL",
+    "color": "#0C5DC5",
+    "carrier_id": 13,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 18,
+    "name": "MR",
+    "display_name": "specjalny",
+    "logo_text": "specjalny",
+    "color": "#E50000",
+    "carrier_id": 4,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 20,
+    "name": "PRS",
+    "display_name": "PRS",
+    "logo_text": "specjalny",
+    "color": "#E50000",
+    "carrier_id": 4,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 48,
+    "name": "sR",
+    "display_name": "sR",
+    "logo_text": "sR",
+    "color": "#E50000",
+    "carrier_id": 4,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 1,
+    "name": "TLK",
+    "display_name": "TLK",
+    "logo_text": "TLK",
+    "color": "#F86505",
+    "carrier_id": 3,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 53,
+    "name": "UZ",
+    "display_name": "UZ",
+    "logo_text": "UZ",
+    "color": "#adb3b3",
+    "carrier_id": 17,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  },
+  {
+    "id": 8,
+    "name": "WKD",
+    "display_name": "WKD",
+    "logo_text": "WKD",
+    "color": "#0545CB",
+    "carrier_id": 5,
+    "attribute_definition_id": null,
+    "is_commercial": true
+  }
+]

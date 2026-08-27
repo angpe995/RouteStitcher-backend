@@ -14,7 +14,6 @@ const searchRoutes = async (req, res) => {
       Number(destination),
       limit
     );
-
     return res.json(connections);
   } catch (error) {
     console.error("Failed to search routes:", error);

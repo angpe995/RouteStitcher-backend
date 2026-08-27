@@ -69,8 +69,11 @@ const validateVariant = async (
       }
       availabilityCache.set(availabilityKey, checkWhole);
     }
+    console.log(checkWhole);
     const isAvailable = checkWhole.every((train) => {
+      console.log(train.place_types,placeClass);
       const selectedPlaceType = selectPlaceClass(train.place_types, placeClass);
+      //console.log(selectedPlaceType);
       if (!selectedPlaceType) {
         return false;
       }
@@ -113,6 +116,7 @@ const findBestVariant = async (
   let bestVariant = null;
   let minCovarage = 0;
   for (const variant of variants) {
+//    console.log(variant);
     const validatedVariant = await validateVariant(
       variant,
       availabilityCache,
@@ -127,13 +131,14 @@ const findBestVariant = async (
       minCovarage = validatedVariant.coverage;
     }
   }
+//  console.log(bestVariant);
   return bestVariant;
 };
 const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
   const connectionCache = new Map();
   const availabilityCache = new Map();
   const checkWhole = await availabilityPlaner.checkAvailability(connection);
-  if (!checkWhole) {
+  if (!checkWhole || checkWhole.length===0) {
     return [];
   }
   const availableVariants = [];
@@ -150,6 +155,7 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
         origin_station_id: trainLeg.origin_station_id,
         destination_station_id: trainLeg.destination_station_id,
         routeVariant: {
+          brand_id: trainLeg.commercial_brand_id,
           type: "direct",
           segments: [],
           coveredDuration: trainLeg.duration,
@@ -165,7 +171,7 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
           i,
           placeClass,
         );
-        console.log("BEST VAARIANT",trainLeg.train_nr,bestVariant);
+        //console.log("BEST VAARIANT",trainLeg.train_nr,bestVariant);
         if (bestVariant && bestVariant.coverage === MAX_COVERAGE) {
           break;
         }
@@ -183,6 +189,7 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
           origin_station_id: trainLeg.origin_station_id,
           destination_station_id: trainLeg.destination_station_id,
           routeVariant: {
+            brand_id: trainLeg.commercial_brand_id,
             type: "standing",
             segments: [],
             coveredDuration: 0,
