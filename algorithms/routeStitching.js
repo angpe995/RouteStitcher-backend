@@ -128,6 +128,7 @@ const validateVariant = async (
     }
     //console.log(checkWhole[0].place_types);
     const isAvailable = checkWhole.every((train) => {
+      console.log(train.place_types,placeClass);
       const selectedPlaceType = selectPlaceClass(train.place_types, placeClass);
       //console.log("selectedPlaceType", selectedPlaceType);
       if (!selectedPlaceType) {
