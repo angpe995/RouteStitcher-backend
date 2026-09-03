@@ -5,7 +5,7 @@ function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate() + 1).padStart(2, "0");
-  const hour = String(date.getHours()-12).padStart(2, "0");
+  const hour = String(date.getHours() - 12).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
   return `${day}.${month}.${year}T${hour}:${minutes}:00`;
 }
@@ -51,14 +51,18 @@ describe("routeStitcher integration", () => {
     expect(result).toEqual(expect.any(Array));
   });
 
-
   it("should return valid variants", () => {
+    console.log("RESULT", result);
     for (const variant of result) {
       expect(variant).toEqual(
         expect.objectContaining({
-          coverage: expect.any(Number),
-          coveredDuration: expect.any(Number),
-          segments: expect.any(Array),
+          uuid: expect.any(String),
+          train_nr: expect.any(Number),
+          train_name: expect.any(String),
+          origin_station_id: expect.any(Number),
+          destination_station_id: expect.any(Number),
+          departure: expect.any(String),
+          arrival: expect.any(String),
         }),
       );
     }
@@ -67,7 +71,7 @@ describe("routeStitcher integration", () => {
   it("should return valid segments", async () => {
     connection = await getConnection(KOLOBRZEG, BYDGOSZCZ, 0);
     for (const variant of result) {
-      for (const segment of variant.segments) {
+      for (const segment of variant.routeVariant.segments) {
         expect(segment).toEqual(
           expect.objectContaining({
             train_nr: expect.any(Number),
@@ -85,9 +89,9 @@ describe("routeStitcher integration", () => {
 
   it("should have consecutive segments", () => {
     for (const variant of result) {
-      for (let i = 1; i < variant.segments.length; i++) {
-        expect(variant.segments[i].station_origin).toBe(
-          variant.segments[i - 1].station_destination,
+      for (let i = 1; i < variant.routeVariant.segments.length; i++) {
+        expect(variant.routeVariant.segments[i].station_origin).toBe(
+          variant.routeVariant.segments[i - 1].station_destination,
         );
       }
     }

@@ -66,6 +66,7 @@ const checkAvailability = async (connection) => {
     }
     result.push(trainResult);
   }
+  //console.log("RESULT:::",result[0].place_types[1]);
   return result;
 };
 module.exports = {
