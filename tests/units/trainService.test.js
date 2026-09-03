@@ -130,11 +130,11 @@ it("should return nested seats", async () => {
   const result = await trainService.getConnections(date, LODZ, KUTNO);
   const connection = result[0];
   const connectionId = await getConnectionId(connection.uuid);
-  const tariffIds = await trainService.getTariffids(connectionId);
-  console.log(tariffIds);
+  const tariffId = await trainService.getTariffids(connectionId);
+  console.log(tariffId);
   const nestedSeats = await trainService.getNestedSeats(
     connectionId,
-    tariffIds,
+    tariffId[0],
   );
   expect(nestedSeats).toHaveProperty("train_place_types");
 });
@@ -143,7 +143,7 @@ it("should return place types", async () => {
   const connection = result[0];
   const connectionId = await getConnectionId(connection.uuid);
   const tariffIds = await trainService.getTariffids(connectionId);
-  const placeTypes = await trainService.getPlaceTypes(connectionId, tariffIds);
+  const placeTypes = await trainService.getPlaceTypes(connectionId, tariffIds[0]);
   expect(placeTypes).toEqual(expect.any(Array));
   if (placeTypes.length > 0) {
     expect(placeTypes[0].place_types[0]).toEqual(

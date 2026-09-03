@@ -2,6 +2,7 @@ const { getAccessToken } = require("./authService");
 const api = require("./pkpApi");
 const fetchSeatsAvailability = async (connectionId, trainId, seatClass) => {
   const token = await getAccessToken();
+//  console.log(`/seats_availability/${connectionId}/${trainId}/${seatClass}`);
   const response = await api.get(
     `/seats_availability/${connectionId}/${trainId}/${seatClass}`,
     {
@@ -32,18 +33,12 @@ const getConnectionByUUID = async (getConnectionByUUID) => {
 const getFreeSeats = (seats) => {
   return seats.filter((seat) => seat.state === "FREE");
 };
-const checkTrainAvailability = async (
-  connection,
-  trainNr,
-  placeTypeIds,
-) => {
+const checkTrainAvailability = async (connection, trainNr, placeTypeIds) => {
   if (!placeTypeIds.length) {
     return null;
   }
   const trainLeg = connection.legs?.find(
-    (leg) =>
-      leg.leg_type === "train_leg" &&
-      leg.train_nr === trainNr,
+    (leg) => leg.leg_type === "train_leg" && leg.train_nr === trainNr,
   );
   if (!trainLeg) {
     return null;
@@ -57,7 +52,9 @@ const checkTrainAvailability = async (
         trainNr,
         placeTypeId,
       );
+     
       const freeSeats = getFreeSeats(seats.seats);
+       //console.log("AVAILSERVICE",freeSeats);
       placeTypes.push({
         id: placeTypeId,
         seats: freeSeats,

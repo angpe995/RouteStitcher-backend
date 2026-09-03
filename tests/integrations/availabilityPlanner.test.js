@@ -50,8 +50,6 @@ it("should return train availability", async () => {
       }),
     );
     for (const placeTypeTrain of train.place_types) {
-      console.log("placeTypeTrain:", placeTypeTrain);
-      console.log("place_types:", placeTypeTrain.place_types);
       console.log("is array:", Array.isArray(placeTypeTrain.place_types));
       expect(placeTypeTrain).toEqual(
         expect.objectContaining({

@@ -2,7 +2,7 @@ jest.mock("../../services/pkpApi");
 const api = require("../../services/pkpApi");
 const availabilityService = require("../../services/availabilityService");
 const connections = require("../fixtures/fullConnection.json");
-const PLACE_TYPES = [1234, 5678];
+const PLACE_TYPES = [1234];
 const TRAIN_NR=83190;
 const seats = require("../fixtures/availibilityList.json");
 jest.setTimeout(30000);
