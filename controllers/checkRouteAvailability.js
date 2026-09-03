@@ -1,4 +1,4 @@
-const routeService=require("../services/routeProcessingService");
+const routeService = require("../services/routeProcessingService");
 const availabilityService = require("../services/availabilityService");
 const checkRoute = async (req, res) => {
   try {
@@ -14,6 +14,11 @@ const checkRoute = async (req, res) => {
       Number(tickets),
       Number(placeClass),
     );
+    if (!result || result.length === 0) {
+      return res.status(422).json({
+        error: "No available route found",
+      });
+    }
     return res.json(result);
   } catch (error) {
     console.error("Failed to check route:", error);
@@ -23,6 +28,6 @@ const checkRoute = async (req, res) => {
     });
   }
 };
-module.exports={
-    checkRoute
-}
+module.exports = {
+  checkRoute,
+};

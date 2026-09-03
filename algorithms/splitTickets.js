@@ -46,6 +46,7 @@ const splitTickets = (leg, tickets = 3) => {
         conn.push({
           train_nr: leg.train_nr,
           train_name: leg.train_name,
+          brand_id: leg.commercial_brand_id,
           station_origin: origin.station_id,
           station_destination: destination.station_id,
           departure: origin.departure,
@@ -64,6 +65,7 @@ const splitTickets = (leg, tickets = 3) => {
         conn.push({
           train_nr: leg.train_nr,
           train_name: leg.train_name,
+          brand_id: leg.commercial_brand_id,
           station_origin: origin.station_id,
           station_destination: destination.station_id,
           departure: origin.departure,

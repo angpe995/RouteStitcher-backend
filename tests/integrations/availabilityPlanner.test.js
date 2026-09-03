@@ -50,18 +50,19 @@ it("should return train availability", async () => {
       }),
     );
     for (const placeTypeTrain of train.place_types) {
-      for (const placeType of placeTypeTrain.place_types) {
-        expect(placeType).toEqual(
-          expect.objectContaining({
-            id: expect.any(Number),
-            name: expect.any(String),
-            available: expect.any(Boolean),
-            seats: expect.any(Array),
-            seat_selection_available: expect.any(Boolean),
-            reservation_modes: expect.any(Object),
-          }),
-        );
-      }
+      console.log("placeTypeTrain:", placeTypeTrain);
+      console.log("place_types:", placeTypeTrain.place_types);
+      console.log("is array:", Array.isArray(placeTypeTrain.place_types));
+      expect(placeTypeTrain).toEqual(
+        expect.objectContaining({
+          id: expect.any(Number),
+          name: expect.any(String),
+          available: expect.any(Boolean),
+          seats: expect.any(Array),
+          seat_selection_available: expect.any(Boolean),
+          reservation_modes: expect.any(Object),
+        }),
+      );
     }
   }
 });
