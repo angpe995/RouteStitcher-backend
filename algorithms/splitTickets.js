@@ -47,8 +47,8 @@ const splitTickets = (leg, tickets = 3) => {
           train_nr: leg.train_nr,
           train_name: leg.train_name,
           brand_id: leg.commercial_brand_id,
-          station_origin: origin.station_id,
-          station_destination: destination.station_id,
+          origin_station_id: origin.station_id,
+          destination_station_id: destination.station_id,
           departure: origin.departure,
           arrival: destination.arrival,
         });
@@ -66,8 +66,8 @@ const splitTickets = (leg, tickets = 3) => {
           train_nr: leg.train_nr,
           train_name: leg.train_name,
           brand_id: leg.commercial_brand_id,
-          station_origin: origin.station_id,
-          station_destination: destination.station_id,
+          origin_station_id: origin.station_id,
+          destination_station_id: destination.station_id,
           departure: origin.departure,
           arrival: destination.arrival,
         });

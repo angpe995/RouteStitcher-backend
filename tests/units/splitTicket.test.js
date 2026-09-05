@@ -38,8 +38,8 @@ describe("splitTickets", () => {
         expect(ticket).toEqual(
           expect.objectContaining({
             train_nr: expect.any(Number),
-            station_origin: expect.any(Number),
-            station_destination: expect.any(Number),
+            origin_station_id: expect.any(Number),
+            destination_station_id: expect.any(Number),
           }),
         );
       });

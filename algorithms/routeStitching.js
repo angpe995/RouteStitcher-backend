@@ -30,8 +30,8 @@ const findMatchingConnection = (connections, segment) =>
       connection.legs?.some(
         (leg) =>
           leg.train_name === segment.train_name &&
-          leg.origin_station_id === segment.station_origin &&
-          leg.destination_station_id === segment.station_destination,
+          leg.origin_station_id === segment.origin_station_id &&
+          leg.destination_station_id === segment.destination_station_id,
       ),
   );
 
@@ -94,15 +94,15 @@ const validateVariant = async (
 
   // console.log("Variant: ", newVariant);
   for (const leg of newVariant) {
-    const keyConnection = `${leg.departure}-${leg.station_origin}-${leg.station_destination}`;
+    const keyConnection = `${leg.departure}-${leg.origin_station_id}-${leg.destination_station_id}`;
     let connection;
     if (connectionCache.has(keyConnection))
       connection = connectionCache.get(keyConnection);
     else {
       const connections = await trainService.getConnections(
         leg.departure,
-        leg.station_origin,
-        leg.station_destination,
+        leg.origin_station_id,
+        leg.destination_station_id,
       );
       connection = findMatchingConnection(connections, leg);
       if (!connection) {
@@ -128,7 +128,6 @@ const validateVariant = async (
     }
     //console.log(checkWhole[0].place_types);
     const isAvailable = checkWhole.every((train) => {
-      console.log(train.place_types,placeClass);
       const selectedPlaceType = selectPlaceClass(train.place_types, placeClass);
       //console.log("selectedPlaceType", selectedPlaceType);
       if (!selectedPlaceType) {
@@ -161,7 +160,7 @@ const validateVariant = async (
       break;
     }
   }
-  console.log("coveredDuration", evaluatedSegments);
+  //  console.log("coveredDuration", evaluatedSegments);
   evaluatedSegments.sort((a, b) => a.originalIndex - b.originalIndex);
   return {
     type: "split",
@@ -182,7 +181,7 @@ const findBestVariant = async (
   let bestVariant = null;
   let minCovarage = 0;
   for (const variant of variants) {
-    //    console.log(variant);
+    // console.log("Variant:", variant);
     const validatedVariant = await validateVariant(
       variant,
       availabilityCache,
@@ -198,15 +197,35 @@ const findBestVariant = async (
       minCovarage = validatedVariant.coverage;
     }
   }
-  //console.log(bestVariant);
+  console.dir(bestVariant, { depth: null });
   return bestVariant;
 };
 const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
   const connectionCache = new Map();
   const availabilityCache = new Map();
   const checkWhole = await availabilityPlaner.checkAvailability(connection);
+  console.log("checkWhole", checkWhole);
   if (!checkWhole || checkWhole.length === 0) {
-    return [];
+    const train = connection.legs.find((leg) => leg.leg_type === "train_leg");
+    const trainLeg = getTrainLeg(connection, train.train_nr);
+    return [
+      {
+        uuid: connection.uuid,
+        train_nr: trainLeg.train_nr,
+        train_name: trainLeg.train_name,
+        origin_station_id: trainLeg.origin_station_id,
+        destination_station_id: trainLeg.destination_station_id,
+        departure: trainLeg.departure,
+        arrival: trainLeg.arrival,
+        routeVariant: {
+          brand_id: trainLeg.commercial_brand_id,
+          type: "direct",
+          segments: [],
+          coveredDuration: trainLeg.duration,
+          coverage: MAX_COVERAGE,
+        },
+      },
+    ];
   }
   const availableVariants = [];
   for (const train of checkWhole) {
@@ -216,8 +235,54 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
       continue;
     }
     let bestVariant;
-    const selectedPlaceType = selectPlaceClass(train.place_types, placeClass);
-    //console.log("AAAAAAAA",selectedPlaceType);
+    const key = `${trainLeg.departure}-${trainLeg.origin_station_id}-${trainLeg.destination_station_id}-${trainLeg.train_nr}`;
+
+    let LocalConnection;
+
+    if (connectionCache.has(key)) {
+      LocalConnection = connectionCache.get(key);
+    } else {
+      const connections = await trainService.getConnections(
+        trainLeg.departure,
+        trainLeg.origin_station_id,
+        trainLeg.destination_station_id,
+      );
+
+      LocalConnection = findMatchingConnection(connections, trainLeg);
+
+      if (LocalConnection) {
+        connectionCache.set(key, LocalConnection);
+      }
+    }
+    console.log("LocalConnection", trainLeg.train_name, LocalConnection);
+    const checkLocalWhole =
+      await availabilityPlaner.checkAvailability(LocalConnection);
+    if (!checkLocalWhole || checkLocalWhole.length === 0) {
+      availableVariants.push({
+        uuid: connection.uuid,
+        train_nr: trainLeg.train_nr,
+        train_name: trainLeg.train_name,
+        origin_station_id: trainLeg.origin_station_id,
+        destination_station_id: trainLeg.destination_station_id,
+        departure: trainLeg.departure,
+        arrival: trainLeg.arrival,
+        routeVariant: {
+          brand_id: trainLeg.commercial_brand_id,
+          type: "direct",
+          segments: [],
+          coveredDuration: trainLeg.duration,
+          coverage: MAX_COVERAGE,
+        },
+      });
+      continue;
+    }
+    //console.log("checkLocalWhole", checkLocalWhole[0].place_types);
+    const selectedPlaceType = selectPlaceClass(
+      checkLocalWhole[0].place_types,
+      placeClass,
+    );
+
+    //  console.log("AAAAAAAA", selectedPlaceType);
     if (
       selectedPlaceType &&
       (selectedPlaceType.seats.length === 0 ||
@@ -243,6 +308,7 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
         },
       });
     } else {
+      console.log("CCCCCCCCCC");
       for (let i = 2; i <= tickets; i++) {
         bestVariant = await findBestVariant(
           trainLeg,
@@ -251,7 +317,7 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
           i,
           placeClass,
         );
-        //console.log("BEST VAARIANT",trainLeg.train_nr,bestVariant);
+        console.log("BEST VAARIANT", trainLeg.train_nr, bestVariant);
         if (bestVariant && bestVariant.coverage === MAX_COVERAGE) {
           break;
         }
@@ -287,8 +353,8 @@ const routeStitcher = async (connection, tickets = 3, placeClass = null) => {
       }
     }
   }
-  console.log(availableVariants[0].routeVariant.segments);
-    console.log(availableVariants);
+  // console.log(availableVariants[0].routeVariant.segments);
+  console.dir(availableVariants, { depth: null });
   const new_result = await AdaptForUrls(availableVariants);
 
   return new_result;
@@ -311,10 +377,10 @@ const AdaptForUrls = async (result) => {
           isSplit: true,
           blockIdx,
           segIdx,
-          available: seg.available, 
+          available: seg.available,
           departure: seg.departure,
-          origin_station_id: seg.station_origin,
-          station_destination: seg.station_destination,
+          origin_station_id: seg.origin_station_id,
+          destination_station_id: seg.destination_station_id,
           train_name: seg.train_name,
           ref: seg,
         });
@@ -326,7 +392,7 @@ const AdaptForUrls = async (result) => {
         available: block.routeVariant.type !== "standing", // Пример: direct = 'В', standing = 'З'
         departure: block.departure,
         origin_station_id: block.origin_station_id,
-        station_destination: block.destination_station_id,
+        destination_station_id: block.destination_station_id,
         train_name: block.train_name,
         ref: block, // прямая ссылка на объект для мутации
       });
@@ -339,7 +405,10 @@ const AdaptForUrls = async (result) => {
   for (let i = 0; i < flatSegments.length; i++) {
     const current = flatSegments[i];
 
-    if (current.available) {
+    if (
+      current.available &&
+      current.train_name !== flatSegments[i - 1]?.train_name
+    ) {
       currentGroup.push(current);
     } else {
       if (currentGroup.length > 0) {
@@ -365,10 +434,10 @@ const AdaptForUrls = async (result) => {
     const connection = await findConnection(
       first.departure,
       first.origin_station_id,
-      last.station_destination,
+      last.destination_station_id,
       first.train_name,
     );
-
+    console.log("Connection found for group:", connection);
     // Прописываем полученный UUID во все объекты исходного массива result через ссылки
     group.forEach((item) => {
       item.ref.uuid = connection.uuid;
