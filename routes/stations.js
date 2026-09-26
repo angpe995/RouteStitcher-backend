@@ -3,7 +3,7 @@ const router = express.Router();
 
 const stationController = require("../controllers/stationController");
 
-router.get("/stations", async (req, res) => {
+router.get("/", async (req, res) => {
     console.log("STATIONS REQUEST");
 
     const stations = stationsService.getStations();
