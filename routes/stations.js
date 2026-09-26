@@ -6,7 +6,7 @@ const stationController = require("../controllers/stationController");
 router.get("/", async (req, res) => {
     console.log("STATIONS REQUEST");
 
-    const stations = stationsService.getStations();
+    const stations = stationController.getStations();
 
     console.log("CACHE LENGTH:", stations.length);
 
