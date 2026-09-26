@@ -11,7 +11,32 @@ const fetchStations = async () => {
 };
 
 const initialize = async () => {
-    stationsCache = await fetchStations();
+    console.log("INITIALIZE START");
+
+    try {
+        await loadStationsFromFile();
+
+        console.log(
+            "LOADED FROM FILE:",
+            stationsCache.length
+        );
+
+    } catch (err) {
+        console.log("FILE LOAD FAILED:", err.message);
+
+        try {
+            await refreshStations();
+
+            console.log(
+                "REFRESHED:",
+                stationsCache.length
+            );
+
+        } catch (err) {
+            console.error("REFRESH FAILED:", err);
+            throw new Error("Failed to initialize stations cache.");
+        }
+    }
 };
 
 const getStations = () => {
