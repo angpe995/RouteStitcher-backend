@@ -3,14 +3,6 @@ const router = express.Router();
 
 const stationController = require("../controllers/stationController");
 
-router.get("/", async (req, res) => {
-    console.log("STATIONS REQUEST");
-
-    const stations = stationController.getStations();
-
-    console.log("CACHE LENGTH:", stations.length);
-
-    res.json(stations);
-});
+router.get("/", stationController.getStations);
 
 module.exports = router;
