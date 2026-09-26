@@ -1,13 +1,14 @@
-const pkpApi = require("../services/pkpApi");
-const stationService=require("../services/stationService")
+const stationService = require("../services/stationService");
 exports.getStations = (req, res) => {
-    res.json(stationService.getStations());
-}
-exports.searchStation=async (req,res)=>{
-    try{
+    try {
+        const stations = stationService.getStations();
 
-    }
-    catch{
+        res.json(stations);
+    } catch (err) {
+        console.error("GET STATIONS ERROR:", err);
 
+        res.status(500).json({
+            error: err.message
+        });
     }
-}
+};
