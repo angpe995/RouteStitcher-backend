@@ -1,7 +1,10 @@
 const stationService = require("../services/stationService");
-exports.getStations = (req, res) => {
+
+exports.getStations = async (req, res) => {
     try {
-        const stations = stationService.getStations();
+        const stations = await stationService.getStations();
+
+        console.log("RETURNING:", stations.length);
 
         res.json(stations);
     } catch (err) {
