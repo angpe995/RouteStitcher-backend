@@ -3,66 +3,50 @@ const api = require("./pkpApi");
 let stationsCache = [];
 
 const fetchStations = async () => {
+    console.log("FETCHING STATIONS FROM PKP");
+
     const response = await api.get("/stations");
+
+    console.log("PKP STATUS:", response.status);
+    console.log("PKP COUNT:", response.data.length);
 
     return response.data.filter(
         station => station.country?.toLowerCase() === "polska"
     );
 };
 
-const initialize = async () => {
-    console.log("INITIALIZE START");
-
-    try {
-        await loadStationsFromFile();
-
-        console.log(
-            "LOADED FROM FILE:",
-            stationsCache.length
-        );
-
-    } catch (err) {
-        console.log("FILE LOAD FAILED:", err.message);
-
-        try {
-            await refreshStations();
-
-            console.log(
-                "REFRESHED:",
-                stationsCache.length
-            );
-
-        } catch (err) {
-            console.error("REFRESH FAILED:", err);
-            throw new Error("Failed to initialize stations cache.");
-        }
+const getStations = async () => {
+    if (stationsCache.length === 0) {
+        stationsCache = await fetchStations();
     }
-};
 
-const getStations = () => {
     return stationsCache;
-};
-
-const searchStation = (query) => {
-    const normalizedQuery = query.trim().toLowerCase();
-
-    return stationsCache.filter(station =>
-        station.name.toLowerCase().includes(normalizedQuery)
-    );
 };
 
 const refreshStations = async () => {
     stationsCache = await fetchStations();
+    return stationsCache;
 };
 
-const getStationById = (stId) => {
-    return stationsCache.find(({ id }) => id === stId);
+const searchStation = async (query) => {
+    const stations = await getStations();
+
+    const normalizedQuery = query.trim().toLowerCase();
+
+    return stations.filter(station =>
+        station.name.toLowerCase().includes(normalizedQuery)
+    );
+};
+
+const getStationById = async (stId) => {
+    const stations = await getStations();
+
+    return stations.find(({ id }) => id === stId);
 };
 
 module.exports = {
     refreshStations,
     getStationById,
     getStations,
-    searchStation,
-    initialize
+    searchStation
 };
