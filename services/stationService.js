@@ -18,10 +18,12 @@ const initialize =async ()=>{
         try {
             await refreshStations();
         } catch (err) {
+            console.error('ERROR:', error);
             console.error(err);
             throw new Error("Failed to initialize stations cache.");
         }
         if (stationsCache.length === 0) {
+            console.error('ERROR:', error);
             throw new Error("Stations cache is empty after refresh.");
         }           
     }
